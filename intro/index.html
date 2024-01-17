@@ -9,8 +9,59 @@
 <body>
     
 <div id="app">
+    <!-- Afficher notre propriété de données  message -->
+    <!--  Interpolation -->
+    <h1>{{ message }} Bonjour </h1>
+    <!-- avec une directive  -->
+    <!-- La directive surcharge le contenu -->
+    <h1 v-text="message">Bonjour </h1>
+
+    <!-- Afficher une fonction 
+     -->
+     <h1>{{ maFonction() }}</h1>
+     <!-- Contrairement aux méthodes les computed s'affichent sans les parenthèses  -->
+     <h1>{{ addition }}</h1>
+     <!-- v-html interprète le html brut  -->
+     <div v-html="html"></div>
 
 
+     <!-- v-bind -->
+     <a v-bind:href="url">Vers google </a>
+     <a :href="url">Vers google </a>
+     <img v-bind:src="lienImg" alt="">
+     <div v-bind="objAttr"></div>
+     <br>
+     <input  type="text" v-bind:disabled="show">
+<br>
+     <!-- v-on  -->
+     <button v-on:click="compteur++">Augmente</button>
+     <button  v-on:click="compteur--">Baisse</button>
+     <p>{{ compteur }}</p>
+<br>
+     <!-- Exercice: afficher un canvas et afficher la position du curseur sur x et y  -->
+     <canvas></canvas>
+        <p>Position X: {{ x }} Position Y: {{ y }}</p>
+
+<br>
+        <!-- Event modifier  -->
+        <button v-on:click.once="clicked">Cliquez ici</button>
+
+        <div @click="clicked">
+            <p>Lorem ipsum dolor sit amet.
+                <button v-on:click.stop="clicked">Cliquez ici </button>
+            </p>
+        </div>
+
+        <form v-on:submit.prevent="onSubmit" >
+            <input type="text">
+            <button type="submit">Envoyer</button>
+        </form>
+
+<br>
+        <!-- v-model -->
+        <!-- binding bi-directionnel -->
+        <input type="text" v-model="value">
+        {{ value }}
 
 
 </div>
