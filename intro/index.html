@@ -39,7 +39,9 @@
      <p>{{ compteur }}</p>
 <br>
      <!-- Exercice: afficher un canvas et afficher la position du curseur sur x et y  -->
-     <canvas></canvas>
+     <canvas v-on:mousemove="coords"></canvas>
+     <!-- Equivalent -->
+     <canvas @mousemove="coords"></canvas>
         <p>Position X: {{ x }} Position Y: {{ y }}</p>
 
 <br>
@@ -62,6 +64,46 @@
         <!-- binding bi-directionnel -->
         <input type="text" v-model="value">
         {{ value }}
+
+<br>
+<br>
+<br>
+
+<!-- Différence methods et computed -->
+    <h1>CompteurA</h1>
+    <button v-on:click="compteurA++">Augmente</button>
+     <button  v-on:click="compteurA--">Baisse</button>
+     <p>{{ compteurA }}</p>
+
+     <p>{{ checkMethods() }} //// {{ checkComputed }}</p>
+
+     <h1>CompteurB</h1>
+     <button v-on:click="compteurB++">Augmente</button>
+     <button  v-on:click="compteurB--">Baisse</button>
+     <p>{{ compteurB }}</p>
+
+
+     <!--  toggle et binding de class/style  -->
+     <button v-on:click="toggleColor = !toggleColor">Toggle la couleur</button>
+     <!-- Meme chose en ternaire  -->
+     <!-- <button v-on:click="toggleColor = toggleColor?false:true">Toggle la couleur</button> -->
+
+
+     <!-- <div class="box" v-bind:class="{red : toggleColor}"></div> -->
+     <!-- Meme chose en ternaire  -->
+     <!-- <div class="box" v-bind:class="toggleColor ? 'red' : ''"></div> -->
+     <!-- Equivalent -->
+     <!-- <div class="box" :class="{red : toggleColor}"></div> -->
+
+     <!-- regrouper les class dans un objet  -->
+     <!-- <div v-bind:class="objCss"></div> -->
+     <!-- faire passer les class dans un tableau  -->
+     <!-- <div :class="[objCss, 'border']"></div> -->
+
+     <!-- binding de style -->
+     <div class="box" v-bind:style="objCss2"></div>
+
+
 
 
 </div>
