@@ -18,7 +18,7 @@ data(){
             id: 'monId',
             class: 'container'
         },
-        show:true,
+        show:false,
 
         // v-on 
         compteur: 0,
@@ -35,6 +35,39 @@ data(){
 
         //   toggle et binding de class/style 
         toggleColor: false,
+
+        // v-for 
+        arr : [1,2,3,4,5,6,7,8,9,10],
+        arrFruits: ['pomme', 'poire', 'banane', 'fraise', 'kiwi'],
+        arrUser:{
+            nom: 'Doe',
+            prenom: 'John',
+            age: 25,
+        },
+        arrUser2:[
+            {
+                id: 1,
+                nom: 'Doe',
+                prenom: 'John',
+                age: 25,
+            },
+            {
+                id: 2,
+                nom: 'Doe',
+                prenom: 'Franck',
+                age: 30,
+            },
+            {
+                id: 3,
+                nom: 'Doe',
+                prenom: 'Jack',
+                age: 35,
+            },
+        ],
+
+        // Les watchers
+        compteurC: 0,
+        compteurD: 0,
     }
 }, 
 methods: {
@@ -87,7 +120,31 @@ computed:{
         }
     }
 
+}, 
+watch:{
+    compteurC(newValue, oldValue){
+     alert('La valeur a changé, passant de :' + oldValue + ' à ' + newValue)
+    }, 
+    compteurD(){
+       setTimeout(() => {
+           this.compteurD = 0
+       }, 3000);
+       },
+}, 
+// Les hooks
+beforeCreate(){
+    console.log('beforeCreate')
+},
+mounted(){
+    console.log('mounted')
+},
+beforeUpdate(){
+    console.log('beforeUpdate')
+},
+updated(){
+    console.log('updated')
 }
+
 
 
 })

@@ -103,7 +103,80 @@
      <!-- binding de style -->
      <div class="box" v-bind:style="objCss2"></div>
 
+<br>
+    <!--v-if et v-show  -->
+    <button v-on:click="show = !show ">Toggle la var show</button>
+    <!-- Afficher le texte si la prop de données est true  -->
+    <!-- v-show ne supprime pas le contenu de la page mais le cache avec display:none -->
+    <!-- <p v-show="show">Texte de v-show </p> -->
+    <!-- v-if supprime le contenu de la page -->
+    <!-- <p v-if="show">Texte de v-if </p> -->
+<br>
+    <!-- v-if et v-else  -->
+    <!-- <h1>v-if / v-else</h1>
+    <button v-on:click="nb++">Augmente</button>
+    <button  v-on:click="nb--">Baisse</button>
+    <p>{{ nb }}</p>
+<br>
+    <p v-if="nb === 0"> Text 1</p>
+    <p v-else-if="nb === 1"> Text 2</p>
+    <p v-else-if="nb === 2"> Text 3</p>
+    <p v-else> Text 4</p> -->
 
+    <!-- Faire des blocs conditionnels -->
+    <!-- <template v-if="show">
+       <p>Lorem ipsum dolor sit amet.</p>
+       <p>Lorem ipsum dolor sit amet.</p>
+       <p>Lorem ipsum dolor sit amet.</p>
+       <p>Lorem ipsum dolor sit amet.</p>
+    </template> -->
+
+    <!-- v-for -->
+    <!-- Boucle sur tableau indéxé numérique -->
+    <!-- <ul>
+        <li v-for="res in arr">{{ res }}</li>
+    </ul> -->
+    <!-- Boucle sur tableau ind alphabétique  -->
+    <!-- <ul>
+        <li v-for="(val, index) in arrFruits">{{index + 1}} - {{ val }}</li>
+    </ul> -->
+
+    <!-- Boucle sur un objet  -->
+    <!-- <ul>
+        <li v-for="(val, prop) in arrUser"> {{prop}} - {{val}}</li>
+    </ul> -->
+
+    <!-- Boucle sur tableau d'objets  -->
+    <!-- <ul>
+        <li v-for="res in arrUser2">
+            <div v-for="(val, prop) in res">{{ prop }} - {{ val }}</div>
+        </li>
+    </ul> -->
+
+    <!-- Autre structure pour la boucle sur tableau d'objets -->
+    <!-- Utiliser l'attribut :key pour définir un identifiant unique -> permet à vue de gérer plus facilement la modification des élements -->
+    <!-- <ul>
+        <li v-for="user in arrUser2" :key="user.id">
+            <h1>{{ user.nom }}</h1>
+            <p>{{ user.prenom }}</p>
+            <p>{{ user.age }}</p>
+        </li>
+    </ul> -->
+<br>
+
+    <h1>Les watchers</h1>
+    <h2>CompteurC</h2>
+    <button v-on:click="compteurC++">Augmente</button>
+    <button  v-on:click="compteurC--">Baisse</button>
+    <p>{{ compteurC }}</p>
+
+<br>
+<br>
+
+    <h2>CompteurD</h2>
+    <button v-on:click="compteurD++">Augmente</button>
+    <button  v-on:click="compteurD--">Baisse</button>
+    <p>{{ compteurD }}</p>
 
 
 </div>
