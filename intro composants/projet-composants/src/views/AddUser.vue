@@ -10,7 +10,7 @@
 <script>
 // 1- Importer le composant 
 import UserForm from '@/components/UserForm.vue';
-import MyButton from '@/components/MyButton.vue';
+import MyButton from '@/components/MyButton.vue'git ;
 
 export default {
     // 2- Exposer le composant 
