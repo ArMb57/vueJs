@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UserTable :users="PUsers"/>
+    <UserTable :users="PUsers" @delete-user="deleteUser"/>
 
   </div>
 </template>
@@ -24,6 +24,17 @@ export default {
             .filter(key => key.startsWith('user_'))
             .map(key => JSON.parse(localStorage.getItem(key)))
 
+        }, 
+        deleteUser(userId){
+            
+           let index = this.PUsers.findIndex(user => user.id === userId)
+              if(index !== -1){
+                  localStorage.removeItem(`user_${userId}`)
+                  let updatedUsers = [...this.PUsers]
+                    updatedUsers.splice(index, 1)
+                    this.PUsers = updatedUsers
+                    alert('Utilisateur supprimé')
+              }
         }
     }, 
     mounted(){

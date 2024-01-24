@@ -2,7 +2,7 @@
   <div>
     <!-- 1- Pré-remplir les champs du formulaire de modfication d'un utilisateur -->
     <UserForm :user="PUsers"/>
-    <MyButton label="Modifier" @generalEventBtn="updateUser" />
+    <MyButton label="Modifier" @generalEventBtn="updateUser" backgroundColor="green" />
   
 
   </div>
@@ -24,9 +24,28 @@ export default {
     },
     methods:{
         updateUser(){
-        // 2-  Faire la modification de l'utilisateur 
+        if(this.PUsers){
+            localStorage.setItem(`user_${this.PUsers.id}`, JSON.stringify(this.PUsers));
+            alert('Utilisateur modifié avec succès')
+            this.$router.push('/list');
+
+        }else{
+            alert('Utilisateur non trouvé')
+        }
+        }, 
+        loadUser(userId){
+            let userData = localStorage.getItem(`user_${userId}`);
+            if(userData){
+                this.PUsers = JSON.parse(userData);
+            }else{
+                alert('Utilisateur non trouvé')
+            }
         }
     },
+    mounted(){
+        let userId = this.$route.params.id;
+        this.loadUser(userId);
+    }
     
 
 }

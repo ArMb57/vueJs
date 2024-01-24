@@ -7,6 +7,7 @@
 
 <script>
 export default {
+
     props: {
         label: String, 
         backgroundColor: String
