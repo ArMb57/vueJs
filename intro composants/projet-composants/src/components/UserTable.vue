@@ -62,6 +62,7 @@ export default {
     },
     methods:{
         editUser(index){
+          //  Faire une redirection vers le composant views updateUser.vue
           this.$router.push({name: 'edit', params: {id: index}})
         },
         deleteUser(index){

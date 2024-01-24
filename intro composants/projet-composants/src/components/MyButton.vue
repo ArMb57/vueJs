@@ -1,7 +1,11 @@
 <template>
   <div>
     <!-- On défini le type d'event avec @click et on appelle la méthode methGeneralEvent  qui va donner un alias pour la méthode qu'on va utiliser dans le composant parent -->
+    <!-- : -> v-bind -->
+    <!-- @ -> v-on -->
     <button :class="btnClass" @click="methGeneralEvent">{{ label }}</button>
+    <!-- Equivalent -->
+    <!-- <button v-bind:class="btnClass" v-on:click="methGeneralEvent">{{ label }}</button> -->
   </div>
 </template>
 
@@ -16,6 +20,7 @@ export default {
     methods: {
         methGeneralEvent() {
             // Event personnalisé 
+            // Déclarer un alias pour appeler l'evenment sur le composant parent
             this.$emit('generalEventBtn');
         }
     },
