@@ -47,7 +47,7 @@ export default {
   data(){
     return {
       showModalFlag: false,
-      selectedUser: {}
+
     }
   },
     //  On passe des données depuis le parent vers l'enfant,  uniquement!!!
@@ -65,25 +65,26 @@ export default {
     methods:{
         editUser(index){
           //  Faire une redirection vers le composant views updateUser.vue
-          this.$router.push({name: 'edit', params: {id: index}})
+          let userId = this.users[index].id
+          this.$router.push({name: 'edit', params: {id: userId}})
         },
         deleteUser(index){
-          let user = this.users[index]
-            if(user && user.id){
-
-              this.$emit('delete-user', user.id)
-            }else{
-              
-              alert('Utilisateur introuvable')
-            }
+          let userId = this.users[index].id
+          this.$store.commit('deleteUser', userId)
+     
         }, 
         showModal(user){
           this.showModalFlag = true
-          this.selectedUser = user
+          this.$store.commit('setCurrentUser', user)
     
 
         }
 
+    }, 
+    computed:{
+      selectedUser(){
+        return this.$store.state.currentUser
+      }
     }
 
     

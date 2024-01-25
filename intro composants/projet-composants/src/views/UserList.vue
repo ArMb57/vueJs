@@ -1,28 +1,33 @@
 <template>
   <div>
-    <UserTable :users="PUsers" @delete-user="deleteUser"/>
+    <SearchBar @search='filter'/>
+    <UserTable :users="filtered" @delete-user="deleteUser"/>
 
   </div>
 </template>
 
 <script>
 import UserTable from '@/components/UserTable.vue'
+import SearchBar from '@/components/SearchBar.vue'
 export default {
     data(){
         return{
             PUsers: [],
+            filtered: []
         }
     },
                 
                   
     components:{
-        UserTable
+        UserTable,
+        SearchBar
     }, 
     methods:{
         loadUsers(){
             this.PUsers= Object.keys(localStorage)
             .filter(key => key.startsWith('user_'))
             .map(key => JSON.parse(localStorage.getItem(key)))
+            this.filtered = [...this.PUsers]
 
         }, 
         deleteUser(userId){
@@ -35,6 +40,13 @@ export default {
                     this.PUsers = updatedUsers
                     alert('Utilisateur supprimé')
               }
+        },
+        filter(query){
+            this.filtered = this.PUsers.filter(user => 
+            user.firstName.toLowerCase().includes(query.toLowerCase()) ||
+            user.lastName.toLowerCase().includes(query.toLowerCase())
+            )
+
         }
     }, 
     mounted(){
@@ -45,5 +57,7 @@ export default {
 </script>
 
 <style>
+
+
 
 </style>
